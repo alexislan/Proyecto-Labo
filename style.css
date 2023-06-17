@@ -5,8 +5,12 @@ body{
 }
 .dark{
     background-color: #343D5B;
-    color: white;
 }
+
+.sss {
+    background-color: black;
+}
+
 img{
     height: 30px;
 }
@@ -15,12 +19,32 @@ nav{
     background-color: #ffffff;
 }
 
+/* GRID PELICULAS*/
 .container{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.containerPelis{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+    grid-template-rows: repeat(6, 100px);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    row-gap: 6rem;
+}
+.peli{
+    display: flex;
+    height: 10rem;
+    width: 7rem;
+    color: white;
+    border: solid white 2px;
+}
+
+/* BOTON DARK MODE */
 .switch{
     margin-right: 15px;
     background-color: #343D5B;
@@ -65,3 +89,5 @@ nav{
 body.dark nav{
     background-color: #535161;
 }
+
+/**/
