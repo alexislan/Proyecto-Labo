@@ -1,0 +1,23 @@
+body{
+    background-color: #212529;
+    min-height: 50vh;
+}
+img{
+    height: 30px;
+}
+
+nav{
+    background-color: rgb(204, 87, 9);
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.peli{
+    display: flex;
+    height: 80px;
+    width: 40px;
+    border: solid white 2px;
+}
