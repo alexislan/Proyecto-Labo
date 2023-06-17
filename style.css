@@ -31,17 +31,23 @@ nav{
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     padding: 10px;
-    grid-template-rows: repeat(6, 100px);
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-    row-gap: 6rem;
+    /* grid-template-rows: repeat(6, minmax(20px, 430px)); */
+    /* grid-template-rows: repeat(6, clamp(100px, 100vh, 1000px)); */
+    grid-template-columns: repeat(2, minmax(100px, 280px));
+    justify-content: center;
+    row-gap: 9rem;
 }
 .peli{
     display: flex;
-    height: 10rem;
-    width: 7rem;
+    /* height: 10rem; */
+    /* width: 7rem; */
     color: white;
     border: solid white 2px;
+}
+
+.peli img {
+    height: 100%;
+    width: 100%;
 }
 
 /* BOTON DARK MODE */
