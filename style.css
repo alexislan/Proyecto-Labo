@@ -41,7 +41,7 @@ nav{
     display: grid;
     grid-gap: 10px;
     padding: 10px;
-    grid-template-rows: repeat(10, minmax(20px, 200px));
+    grid-template-rows: repeat(11, minmax(20px, 200px));
     /* grid-template-rows: repeat(6, clamp(100px, 100vh, 1000px)); */
     grid-template-columns: repeat(2, minmax(100px, 300px));
     justify-content: center;
