@@ -10,10 +10,10 @@ const options = {
     }
   };
   
-  
+
 //peliculas populares 
 function pelisPop(){
-    
+
     function pedirPeliculas(done){
         const results = fetch(pelisPopulares,options);
         results
@@ -66,24 +66,28 @@ function pelisPop(){
         .then(data => {done(data)});
     }
 
-
+    const main = document.querySelector(".containerPelis");
+    main.innerHTML = '';
     getCharacters(data => {
     console.log(data);
     data.results.forEach(pelicula => {
-        const article = document.createRange().createContextualFragment(
-            `
-        <div class="peli"> 
-            <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
-            <div>
-            <p class="tituloPeli">${pelicula.title}</p>
-            <p class="añoPeli">${pelicula.release_date}</p>
+        if(pelicula.poster_path != null){
+            const article = document.createRange().createContextualFragment(
+                `
+            <div class="peli"> 
+                <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
+                <div>
+                <p class="tituloPeli">${pelicula.title}</p>
+                <p class="añoPeli">${pelicula.release_date}</p>
+                </div>
             </div>
-        </div>
-            `
-        )
+                `
+            )
+
+            const main = document.querySelector(".containerPelis");
+            main.append(article)
+        }
         
-        const main = document.querySelector(".containerPelis");
-        main.append(article)
     })
     });
 }
