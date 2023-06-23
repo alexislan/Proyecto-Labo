@@ -1,3 +1,4 @@
+const main = document.querySelector(".containerPelis");
 let html = document.querySelector("html"); 
 let prueba = document.querySelector(".prueba");
 let pelisPopulares = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
@@ -9,7 +10,9 @@ const options = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjRmYWNmMTBjNDY1N2U2YWI0YjJhYWQ2YTBjZTA3NyIsInN1YiI6IjY0OGU4Mjc3MmY4ZDA5MDBlMzg1YTg3MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PQtDV8AM3HocDZ_VMGdQ3WxlvFQNzhPmxCAV191I50M'
     }
   };
+
   
+
 
 //peliculas populares 
 function pelisPop(){
@@ -23,32 +26,36 @@ function pelisPop(){
     
     
     pedirPeliculas(data => {
-        console.log(data);
+        console.log(data);//hay que borrar esto al final
+        const main = document.querySelector(".containerPelis");
+        main.innerHTML = '';
         data.results.forEach(pelicula => {
-            const article = document.createRange().createContextualFragment(
+            const article = document.createRange().createContextualFragment(//agregar la funcion al onclick
                 `
-                <div class="peli"> 
-                <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
-                <div>
-                <p class="tituloPeli">${pelicula.title}</p>
-                <p class="añoPeli">${pelicula.release_date}</p>
-                </div>
-                </div>
+                <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
+                    <div class="peli"> 
+                        <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
+                        <div>
+                            <p class="tituloPeli">${pelicula.title}</p>
+                            <p class="añoPeli">${pelicula.release_date}</p>
+                        </div>
+                    </div>
+                </a>
                 `
                 )
-                
-                const main = document.querySelector(".containerPelis");
+               
                 main.append(article);
             })
         });
+        
     }
     
     
-    function buscar(){
+function buscar(){
         
-        let URL_search = `https://api.themoviedb.org/3/search/movie?query=fast%20x&include_adult=false&language=en-US&page=1`;
-        let input = document.getElementById("inpu");
-        let palabra = input.value;
+    let URL_search = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
+    let input = document.getElementById("inpu");
+    let palabra = input.value;
     let arrayP = palabra.split(" ");
     if(palabra != ""){
         if(arrayP.length == 1){
@@ -66,28 +73,67 @@ function pelisPop(){
         .then(data => {done(data)});
     }
 
-    const main = document.querySelector(".containerPelis");
     main.innerHTML = '';
     getCharacters(data => {
-    console.log(data);
+    console.log(data);//hay que borrar esto al final
     data.results.forEach(pelicula => {
         if(pelicula.poster_path != null){
             const article = document.createRange().createContextualFragment(
                 `
-            <div class="peli"> 
-                <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
-                <div>
-                <p class="tituloPeli">${pelicula.title}</p>
-                <p class="añoPeli">${pelicula.release_date}</p>
-                </div>
-            </div>
+                <a href="#"  type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
+                    <div class="peli"> 
+                        <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
+                        <div>
+                        <p class="tituloPeli">${pelicula.title}</p>
+                        <p class="añoPeli">${pelicula.release_date}</p>
+                        </div>
+                    </div>
+                </a>
                 `
             )
-
-            const main = document.querySelector(".containerPelis");
+            
             main.append(article)
         }
         
     })
     });
+}
+
+function infoPelicula(id){
+console.log(id);//despues borrar
+let infoDePeli = `https://api.themoviedb.org/3/movie/${id}?language=es-MX`;
+
+function getCharacters(done){
+    const results = fetch(infoDePeli,options)
+    results
+    .then(response => response.json())
+    .then(data => {
+        done(data)
+    })
+}
+main.innerHTML = '';
+
+getCharacters(data => {
+    console.log(data)
+    const article = document.createRange().createContextualFragment(
+        `
+        
+            <div class="peli"> 
+                <img src="https://image.tmdb.org/t/p/original/${data.poster_path}" alt="">
+                <div>
+                    <p class="tituloPeli">${data.title}</p>
+                    <p class="añoPeli">${data.release_date}</p>
+                </div>
+            </div>
+
+            <p>${data.overview}</p>
+        `
+    )
+    main.append(article)
+        //hace que vuelva atras en la pagina
+    window.addEventListener('popstate', function (e) {
+        window.location.assign("index.html");
+    });
+})
+
 }
