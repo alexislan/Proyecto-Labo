@@ -23,14 +23,8 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle" href="#" style="font-weight: bold;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Categorias
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -53,9 +47,6 @@
                     <a class="dropdown-item" href="#" onclick="pelisCat(10752)" type="button">Bélica</a>
                   </div>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
               </ul>
               <button class="switch" id="switch">
                 <span><i class="fa-solid fa-sun"></i></span>
@@ -63,7 +54,7 @@
               </button>
               <form class="form-inline my-2 my-lg-0">
                 <input id= "inpu" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button onclick="buscar()" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+                <button onclick="buscar()" class="btn btn-outline-success my-2 my-sm-0" style="font-weight: bold;" type="button">Search</button>
               </form>
             </div>
           </nav>
@@ -73,6 +64,11 @@
     </h1>
 
     <div class="containerPelis">
+    </div>
+
+    <div class="divBotonesCambioPagina">
+      <button class="anterior" type="button" onclick="mostrarAnterior()">Anterior</button>
+      <button class="siguiente" type="button" onclick="mostrarSiguiente()">Siguiente</button>
     </div>
 
     <script src="main.js"></script>
