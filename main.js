@@ -100,6 +100,7 @@ function buscar(){
 }
 
 function infoPelicula(id){
+
 console.log(id);//despues borrar
 let infoDePeli = `https://api.themoviedb.org/3/movie/${id}?language=es-MX`;
 
@@ -136,4 +137,42 @@ getCharacters(data => {
     });
 })
 
+}
+linkcat = '';
+function pelisCat(query){
+
+    let linkcat = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=10&sort_by=vote_count.desc&with_genres=${query}&with_original_language=en`;
+
+    function getCharacters(done){
+        const results = fetch(linkcat,options)
+        results
+        .then(response => response.json())
+        .then(data => {
+            done(data)
+        })
+    }
+    main.innerHTML = '';
+    getCharacters(data => {
+        console.log(data)//despues borrar
+        
+            data.results.forEach(pelicula => {
+                if(pelicula.poster_path != null){
+
+                    const article = document.createRange().createContextualFragment(
+                        `
+                        <a href="#"  type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
+                            <div class="peli"> 
+                                <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
+                                <div>
+                                    <p class="tituloPeli">${pelicula.title}</p>
+                                    <p class="añoPeli">${pelicula.release_date}</p>
+                                </div>
+                            </div>
+                        </a>
+                        `
+                    )
+                    main.append(article)
+                }
+            })
+    })
 }
