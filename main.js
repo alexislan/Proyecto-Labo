@@ -37,6 +37,7 @@ function pelisPop(){
                         <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
                         <div>
                             <p class="tituloPeli">${pelicula.title}</p>
+                            <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
                             <p class="añoPeli">${pelicula.release_date}</p>
                         </div>
                     </div>
@@ -49,7 +50,15 @@ function pelisPop(){
         });
         
     }
-    
+function getColor(vote){
+    if(vote >= 8){
+        return 'green'
+    }else if(vote >= 5){
+        return 'orange'
+    }else{
+        return 'red';
+    }
+}
     
 function buscar(){
         

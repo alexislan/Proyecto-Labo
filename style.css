@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
+    ;
 }
 
 body{
@@ -53,7 +54,6 @@ nav{
     /* width: 7rem; */
     color: white;
     /* border: solid white 2px; */
-
     border: 5px solid #00e054;
     border-radius: 5px;
     box-shadow: inset 0 0 1px 1px rgba(20,24,28,.125);
@@ -69,6 +69,7 @@ nav{
 .peli:hover{
     /* transform: scale(1.1); */
     transition: .3s ease-in-out all;
+    transform: scale(1.02);
     cursor: pointer;
 }
 
@@ -79,7 +80,7 @@ nav{
 
 .peli div {
     /* font-size: 1.2rem; */
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     font-weight: bold;
     text-align: center;
     margin-top: 0.5rem;
@@ -133,4 +134,13 @@ body.dark nav{
     background-color: #535161;
 }
 
+.green{
+    color: lightgreen;
+}
+.orange{
+   color: orange;
+}
+.red{
+   color: red;
+}
 /**/
