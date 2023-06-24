@@ -1,6 +1,8 @@
+const titulo = document.querySelector(".titulocategorico");
 const main = document.querySelector(".containerPelis");
 let html = document.querySelector("html"); 
 let prueba = document.querySelector(".prueba");
+let textoT = '';
 let pelisPopulares = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
 //permisos para consumir la api
 const options = {
@@ -28,8 +30,8 @@ function pelisPop(){
     pedirPeliculas(data => {
         console.log(data);//hay que borrar esto al final
         const main = document.querySelector(".containerPelis");
-        const titulo = document.querySelector(".titulocategorico");
-        let textoT = "Peliculas populares";
+        titulo.innerHTML = '';
+        textoT = "Peliculas populares";
         titulo.innerHTML = textoT;
         main.innerHTML = '';
         let article = ""
@@ -46,7 +48,6 @@ function pelisPop(){
                             <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
                             <img src="imagenes/star-solid-24.png">
                             </div>
-                            
                         </div>
                     </div>
                 </a>
@@ -97,12 +98,15 @@ function buscar(){
         if(pelicula.poster_path != null){
             const article = document.createRange().createContextualFragment(
                 `
-                <a href="#"  type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
+                <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
                     <div class="peli"> 
                         <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
                         <div>
-                        <p class="tituloPeli">${pelicula.title}</p>
-                        <p class="añoPeli">${pelicula.release_date}</p>
+                            <p class="tituloPeli">${pelicula.title}</p>
+                            <div class = "puntajeP">
+                            <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
+                            <img src="imagenes/star-solid-24.png">
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -156,7 +160,7 @@ getCharacters(data => {
 
 }
 linkcat = '';
-function pelisCat(query){
+function pelisCat(query, cat){
 
     let linkcat = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=10&sort_by=vote_count.desc&with_genres=${query}&with_original_language=en`;
 
@@ -171,20 +175,35 @@ function pelisCat(query){
     main.innerHTML = '';
     getCharacters(data => {
         console.log(data)//despues borrar
-        
+        console.log(cat)//borrar
+        titulo.innerHTML = '';
+        if(cat === 'Bélicas'){
+            textoT = `Peliculas ${cat}`;
+        }else if(cat === 'Documentales'){
+            textoT = `${cat}`;
+        }else if(cat === 'Familiares'){
+            textoT = `Peliculas ${cat}`;
+        }
+        else{
+            textoT = `Peliculas de ${cat}`;
+        }
+        titulo.innerHTML = textoT;
             data.results.forEach(pelicula => {
                 if(pelicula.poster_path != null){
 
                     const article = document.createRange().createContextualFragment(
                         `
-                        <a href="#"  type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
-                            <div class="peli"> 
-                                <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
-                                <div>
-                                    <p class="tituloPeli">${pelicula.title}</p>
-                                    <p class="añoPeli">${pelicula.release_date}</p>
-                                </div>
+                        <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
+                        <div class="peli"> 
+                            <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
+                        <div>
+                            <p class="tituloPeli">${pelicula.title}</p>
+                            <div class = "puntajeP">
+                                <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
+                                <img src="imagenes/star-solid-24.png">
                             </div>
+                        </div>
+                        </div>
                         </a>
                         `
                     )
