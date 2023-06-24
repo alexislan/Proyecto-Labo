@@ -28,26 +28,35 @@ function pelisPop(){
     pedirPeliculas(data => {
         console.log(data);//hay que borrar esto al final
         const main = document.querySelector(".containerPelis");
+        const titulo = document.querySelector(".titulocategorico");
+        let textoT = "Peliculas populares";
+        titulo.innerHTML = textoT;
         main.innerHTML = '';
+        let article = ""
+        //<p class="añoPeli">${pelicula.release_date}</p>
         data.results.forEach(pelicula => {
-            const article = document.createRange().createContextualFragment(//agregar la funcion al onclick
+             article += //agregar la funcion al onclick
                 `
                 <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
                     <div class="peli"> 
                         <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
                         <div>
                             <p class="tituloPeli">${pelicula.title}</p>
+                            <div class = "puntajeP">
                             <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
-                            <p class="añoPeli">${pelicula.release_date}</p>
+                            <img src="imagenes/star-solid-24.png">
+                            </div>
+                            
                         </div>
                     </div>
                 </a>
                 `
-                )
+                ;
                
-                main.append(article);
+                main.innerHTML = article;
             })
         });
+        
         
     }
     function getColor(vote){
