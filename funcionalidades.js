@@ -23,9 +23,9 @@ function mostrarSiguiente() {
     }
 
     getCharacters(data => {
-        console.log(data)
-        console.log(cont)
-
+        console.log(data)//borrar
+        console.log(cont)//borrar
+        topFunction()
         main.innerHTML = '';
         let article = ""
         data.results.forEach(pelicula => {
@@ -69,9 +69,9 @@ function mostrarAnterior() {
         }
 
         getCharacters(data => {
-            console.log(data)
-            console.log(cont)
-
+            console.log(data)//borrar
+            console.log(cont)//borrar
+            topFunction()
             main.innerHTML = '';
             let article = ""
             data.results.forEach(pelicula => {

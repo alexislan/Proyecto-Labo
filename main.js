@@ -1,9 +1,10 @@
 const titulo = document.querySelector(".titulocategorico");
 const main = document.querySelector(".containerPelis");
-let html = document.querySelector("html");
-let prueba = document.querySelector(".prueba");
+const info = document.querySelector(".infoPeliculas");
 let textoT = '';
+let linkcat = '';
 let pelisPopulares = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
+
 
 //permisos para consumir la api
 const options = {
@@ -60,6 +61,8 @@ function pelisPop() {
 
 
 }
+
+//funcion para cambiar de color el puntaje
 function getColor(vote) {
     if (vote >= 8) {
         return 'green'
@@ -69,6 +72,9 @@ function getColor(vote) {
         return 'red';
     }
 }
+
+
+//funcion para buscar las peliculas con el input
 function buscar() {
 
     let URL_search = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
@@ -120,6 +126,9 @@ function buscar() {
     });
 }
 
+
+
+//funcion para ver la info de las peliculas
 function infoPelicula(id) {
 
     console.log(id);//despues borrar
@@ -139,19 +148,32 @@ function infoPelicula(id) {
         console.log(data)
         const article = document.createRange().createContextualFragment(
             `
-            <div class="peli"> 
+            <div class="infoPeli"> 
+                <div class="banner">
+                <img src="https://image.tmdb.org/t/p/original/${data.backdrop_path}" alt="">
+                </div>
+                <div class="poster">
                 <img src="https://image.tmdb.org/t/p/original/${data.poster_path}" alt="">
+                </div>
                 <div>
+                    <div class = "puntajeP">
+                        <span class="${getColor(data.vote_average)}">${data.vote_average}</span>
+                        <img src="imagenes/star-solid-24.png">
+                    </div>
+                    <p>Duracion: ${data.runtime}min</p>
                     <p class="tituloPeli">${data.title}</p>
                     <p class="añoPeli">${data.release_date}</p>
+                </div>
                     <button class="trailer" id="${data.id}"> Trailer </button>
+                    <div>
+                    <p>${data.overview}</p>
+                    
                     </div>
             </div>
-            <p>${data.overview}</p>
         `
         )
 
-        main.append(article)
+        info.append(article)
         document.getElementById(id).addEventListener('click', () => {
             openNav(data)
         })
@@ -159,10 +181,16 @@ function infoPelicula(id) {
 
 }
 
+
+
+
+
+//funcion para ver el trailer de la peli
 const overlayContent = document.getElementById('overlay-content')
 function openNav(data) {
     let id = data.id
-    fetch('https://api.themoviedb.org/3/movie/' + id + '/videos?' + 'api_key=bb4facf10c4657e6ab4b2aad6a0ce077').then(res => res.json())
+    console.log(id);
+    fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,options).then(res => res.json())
         .then(videoData => {
             console.log(videoData)
             if (videoData) {
@@ -173,12 +201,12 @@ function openNav(data) {
                         let { name, key, site } = video;
                         if (site == 'YouTube') {
                             embed.push(`
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" 
-                title="${name}" class="embed hide" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; 
-                encrypted-media; gyroscope; picture-in-picture; 
-                web-share" allowfullscreen></iframe>
-                    `)
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" 
+                            title="${name}" class="embed hide" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; 
+                            encrypted-media; gyroscope; picture-in-picture; 
+                            allow ="web-share" ></iframe>
+                            `)
 
                         }
                     })
@@ -192,6 +220,7 @@ function openNav(data) {
         })
 }
 
+//funcion para que se pueda cerrar el nav del trailer
 function closeNav() {
     document.getElementById("myNav").style.width = "0%";
     const iframes = document.getElementsByTagName('iframe');
@@ -205,6 +234,7 @@ function closeNav() {
 var activeSlide = 0;
 var totalVideos = 0;
 
+//funcion para mostrar los videos
 function showVideos() {
     let embedClasses = document.querySelectorAll('.embed')
     totalVideos = embedClasses.length;
@@ -236,10 +266,16 @@ rightArrow.addEventListener('click', () => {
     }
     showVideos();
 })
-linkcat = '';
+
+
+
+
+
+
+//funcion para pedir peliculas segun la categoria
 function pelisCat(query, cat) {
 
-    let linkcat = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=10&sort_by=vote_count.desc&with_genres=${query}&with_original_language=en`;
+    linkcat = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=10&sort_by=vote_count.desc&with_genres=${query}&with_original_language=en`;
 
     function getCharacters(done) {
         const results = fetch(linkcat, options)

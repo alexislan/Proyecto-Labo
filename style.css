@@ -22,7 +22,7 @@ body {
     background-color: black;
 }
 
-img {
+.logo {
     height: 30px;
 }
 
@@ -35,6 +35,31 @@ header {
     top: 0;
     z-index: 1;
 }
+
+/*informacion de la peli*/
+.infoPeliculas{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.infoPeli{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.infoPeli .banner img{
+width: 100%;
+margin-bottom: 20px;
+}
+.infoPeli .poster img{
+    justify-content: center;
+    display: flex;
+    height: 200px;
+    width: 125px;
+}
+
 
 .titulocategorico {
     display: flex;
