@@ -213,106 +213,22 @@ p {
 
 /*BOTON PARA VER TRAILER */
 .trailer {
-    padding: 14px 33px;
-    border-radius: 10px;
-    border: 0;
-    background-color: rgb(255, 56, 86);
-    letter-spacing: 1.5px;
-    font-size: 15px;
-    transition: all 0.3s ease;
-    box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
-    color: hsl(0, 0%, 100%);
-    margin: 0.8rem 0 1.2rem 0;
+    background-color: #f9dc5c;
+    border-radius: 5px;
+    margin: 1rem;
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease all;
 }
-
-.trailer:hover {
-    box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+.trailer:hover{
+    scale: 1.1;
+    transition: 0.3s ease all;
 }
-
-.trailer:active {
-    background-color: rgb(255, 56, 86);
-    box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
-    transform: translateY(5px);
-    transition: 200ms;
+.trailer:active{
+    transition: 0.3s ease all;
 }
-
-/*PANTALLA PARA VER EL TRAILER */
-.overlay {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.9);
-    overflow-x: hidden;
-    transition: 0.5s;
-}
-
-.overlay-content {
-    position: relative;
-    top: 25%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.overlay a:hover,
-.overlay a:focus {
-    color: #f1f1f1;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-    .overlay a {
-        font-size: 20px;
-    }
-
-    .overlay .closebtn {
-        font-size: 40px;
-        top: 15px;
-        right: 35px;
-    }
-}
-
-.embed.hide {
-    display: none;
-}
-
-.embed.show {
-    display: inline-block;
-}
-
-.arrow {
-    position: absolute;
-    font-size: 50px;
-}
-
-.arrow.left-arrow {
-    left: 10%;
-}
-
-.arrow.right-arrow {
-    right: 10%;
-}
-
-/**/
 
 /*BOTONES ANTERIOR Y SIGUIENTE*/
 .divBotonesCambioPagina {
