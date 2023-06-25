@@ -13,13 +13,13 @@ function mostrarSiguiente() {
     cont++;
     URL_search = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${cont}`;
 
-    function getCharacters(done){
+    function getCharacters(done) {
         const results = fetch(URL_search, options)
         results
-        .then(response => response.json())
-        .then(data => {
-            done(data)
-        })
+            .then(response => response.json())
+            .then(data => {
+                done(data)
+            })
     }
 
     getCharacters(data => {
@@ -29,7 +29,7 @@ function mostrarSiguiente() {
         main.innerHTML = '';
         let article = ""
         data.results.forEach(pelicula => {
-             article += //agregar la funcion al onclick
+            article += //agregar la funcion al onclick
                 `
                 <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
                     <div class="peli"> 
@@ -46,9 +46,9 @@ function mostrarSiguiente() {
                 </a>
                 `
                 ;
-               
-                main.innerHTML = article;
-            })
+
+            main.innerHTML = article;
+        })
     });
     mostrarUOcultarAnterior();
     // window.history.forward();
@@ -56,26 +56,26 @@ function mostrarSiguiente() {
 
 
 function mostrarAnterior() {
-    if(cont > 1){
+    if (cont > 1) {
         cont--;
         URL_search = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${cont}`;
-        function getCharacters(done){
+        function getCharacters(done) {
             const results = fetch(URL_search, options)
             results
-            .then(response => response.json())
-            .then(data => {
-                done(data)
-            })
+                .then(response => response.json())
+                .then(data => {
+                    done(data)
+                })
         }
 
         getCharacters(data => {
             console.log(data)
             console.log(cont)
-    
+
             main.innerHTML = '';
             let article = ""
             data.results.forEach(pelicula => {
-                 article += //agregar la funcion al onclick
+                article += //agregar la funcion al onclick
                     `
                     <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
                         <div class="peli"> 
@@ -92,9 +92,9 @@ function mostrarAnterior() {
                     </a>
                     `
                     ;
-                   
-                    main.innerHTML = article;
-                })
+
+                main.innerHTML = article;
+            })
         });
     }
     mostrarUOcultarAnterior();
@@ -103,7 +103,7 @@ function mostrarAnterior() {
 
 //funcion para mostrar el boton anterior en base a la pagina que se encuentra
 function mostrarUOcultarAnterior() {
-    if(cont == 1){
+    if (cont == 1) {
         console.log("CONTADOR EN EL IF: ", cont)
         document.querySelector(".anterior").style.display = "none";
     }
@@ -114,9 +114,25 @@ function mostrarUOcultarAnterior() {
 }
 
 
+let mybutton = document.getElementById("myBtn");
 
-/*VER PARA AGREGAR UN BOTON PARA VOLVER ARRIBA DE TODO*/
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+
+
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
 /*MODIFICAR LO DEL JS PARA QUE AL ABRIR UNA PELI TE LA MUESTRE "BIEN"*/
-/*ARREGLAR Q EL HOVER DE LAS PELIS SE SOBREPONE CON EL HEADER*/
-
-/*DESPUES HACER RESPONSIVE*/
+/*ARREGLAR ERRORES AL HACER CLICK EN EL BOTON TRAILER*/
+/*ARREGLAR EL TEMA DEL PAGINADO*/

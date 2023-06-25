@@ -1,86 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Cueva del Cine</title>
-    <link rel="icon" href="imagenes/Logo.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Poppins:wght@300;400&family=Roboto:wght@100&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Cueva del Cine</title>
+  <link rel="icon" href="imagenes/Logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Poppins:wght@300;400&family=Roboto:wght@100&display=swap"
+    rel="stylesheet">
 </head>
 
 <body onload="pelisPop()">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a href="index.html"><img src="imagenes/Logo.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" style="font-weight: bold;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categorias
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#" onclick="pelisCat(28, 'Acción')" type="button">Acción</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(12, 'Aventura')" type="button">Aventura</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(16, 'Animacion')" type="button">Animacion</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(35, 'Comedia')" type="button">Comedia</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(80, 'Crimenes')" type="button">Crimenes</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(99, 'Documentales')" type="button">Documentales</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(18, 'Drama')" type="button">Drama</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(10751, 'Familiares')" type="button">Familiares</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(14, 'Fantasia')" type="button">Fantasia</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(36, 'Historia')" type="button">Historia</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(27, 'Terror')" type="button">Terror</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(9648, 'Misterio')" type="button">Misterio</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(10749, 'Romance')" type="button">Romance</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(878, 'Ciencia ficción')" type="button">Ciencia ficción</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(10770, 'TV')" type="button">TV</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(53, 'Suspense')" type="button">Suspense</a>
-                    <a class="dropdown-item" href="#" onclick="pelisCat(10752, 'Bélicas')" type="button">Bélicas</a>
-                  </div>
-                </li>
-              </ul>
-              <button class="switch" id="switch">
-                <span><i class="fa-solid fa-sun"></i></span>
-                <span><i class="fa-solid fa-moon"></i></span>
-              </button>
-              <form class="form-inline my-2 my-lg-0">
-                <input id= "inpu" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button onclick="buscar()" class="btn btn-outline-success my-2 my-sm-0" style="font-weight: bold;" type="button">Search</button>
-              </form>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a href="index.html"><img src="imagenes/Logo.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" style="font-weight: bold;" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categorias
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#" onclick="pelisCat(28, 'Acción')" type="button">Acción</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(12, 'Aventura')" type="button">Aventura</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(16, 'Animacion')" type="button">Animacion</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(35, 'Comedia')" type="button">Comedia</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(80, 'Crimenes')" type="button">Crimenes</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(99, 'Documentales')" type="button">Documentales</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(18, 'Drama')" type="button">Drama</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(10751, 'Familiares')" type="button">Familiares</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(14, 'Fantasia')" type="button">Fantasia</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(36, 'Historia')" type="button">Historia</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(27, 'Terror')" type="button">Terror</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(9648, 'Misterio')" type="button">Misterio</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(10749, 'Romance')" type="button">Romance</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(878, 'Ciencia ficción')" type="button">Ciencia
+                ficción</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(10770, 'TV')" type="button">TV</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(53, 'Suspense')" type="button">Suspense</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(10752, 'Bélicas')" type="button">Bélicas</a>
             </div>
-          </nav>
-    </header>
-     
-    <h1 class="titulocategorico"> 
-    </h1>
+          </li>
+        </ul>
+        <button class="switch" id="switch">
+          <span><i class="fa-solid fa-sun"></i></span>
+          <span><i class="fa-solid fa-moon"></i></span>
+        </button>
+        <form class="form-inline my-2 my-lg-0">
+          <input id="inpu" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button onclick="buscar()" class="btn btn-outline-success my-2 my-sm-0" style="font-weight: bold;"
+            type="button">Search</button>
+        </form>
+      </div>
+    </nav>
+  </header>
 
-    <div class="containerPelis"> </div>
+  <h1 class="titulocategorico">
+  </h1>
 
-    <div id="myNav" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> 
-      <div class="overlay-content" id="overlay-content"></div>
-      <a href="javascript:void(0)" class="arrow left-arrow" id="left-arrow">&#8656;</a>
-      <a href="javascript:void(0)" class="arrow right-arrow" id="right-arrow">&#8658;</a>
-    </div>
+  <div class="containerPelis"> </div>
 
-    <div class="divBotonesCambioPagina">
-      <button class="anterior" type="button" onclick="mostrarAnterior()">Anterior</button>
-      <button class="siguiente" type="button" onclick="mostrarSiguiente()">Siguiente</button>
-    </div>
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content" id="overlay-content"></div>
+    <a href="javascript:void(0)" class="arrow left-arrow" id="left-arrow">&#8656;</a>
+    <a href="javascript:void(0)" class="arrow right-arrow" id="right-arrow">&#8658;</a>
+  </div>
 
-    <script src="main.js"></script>
-    <script src="funcionalidades.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <div class="divBotonesCambioPagina">
+    <button class="anterior btn" type="button" onclick="mostrarAnterior()">Anterior</button>
+    <button class="siguiente btn" type="button" onclick="mostrarSiguiente()">Siguiente</button>
+  </div>
+
+  <button onclick="topFunction()" id="myBtn" title="Go to top">
+    <i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="main.js"></script>
+  <script src="funcionalidades.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
