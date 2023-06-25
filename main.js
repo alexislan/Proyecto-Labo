@@ -1,6 +1,10 @@
 const titulo = document.querySelector(".titulocategorico");
 const main = document.querySelector(".containerPelis");
 const info = document.querySelector(".infoPeliculas");
+const botonPag = document.querySelector(".divBotonesCambioPagina");
+const banner = document.querySelector(".pr");
+const tituloPrincipal = document.querySelector(".tituloPag");
+let URL_search = '';
 let textoT = '';
 let linkcat = '';
 let pelisPopulares = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
@@ -37,7 +41,11 @@ function pelisPop() {
         titulo.innerHTML = textoT;
         main.innerHTML = '';
         let article = ""
+        banner.innerHTML = '';
         data.results.forEach(pelicula => {
+            if(pelicula.vote_average >= 8){
+                banner.innerHTML = `<a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)"><img src="https://image.tmdb.org/t/p/original/${pelicula.backdrop_path}" alt="Pelicula mas votada"></a>`;
+            }
             article += //agregar la funcion al onclick
                 `
                 <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
@@ -76,18 +84,21 @@ function getColor(vote) {
 
 //funcion para buscar las peliculas con el input
 function buscar() {
-
-    let URL_search = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
+    let guarda = '';
+    tituloPrincipal.innerHTML = '';
+    banner.innerHTML = '';
     let input = document.getElementById("inpu");
     let palabra = input.value;
     let arrayP = palabra.split(" ");
     if (palabra != "") {
         if (arrayP.length == 1) {
             URL_search = `https://api.themoviedb.org/3/search/movie?query=${input.value}&include_adult=false&language=en-US&page=1`
+            guarda = `https://api.themoviedb.org/3/search/movie?query=${input.value}&include_adult=false&language=en-US&page=`;
         }
         else {
             let newstring = arrayP.join("%20");
             URL_search = `https://api.themoviedb.org/3/search/movie?query=${newstring}&include_adult=false&language=en-US&page=1`
+            guarda = `https://api.themoviedb.org/3/search/movie?query=${newstring}&include_adult=false&language=en-US&page=`
         }
     }
     function getCharacters(done) {
@@ -100,6 +111,7 @@ function buscar() {
     main.innerHTML = '';
     getCharacters(data => {
         console.log(data);//hay que borrar esto al final
+        titulo.innerHTML = "Resultados para: "+ palabra;
         data.results.forEach(pelicula => {
             if (pelicula.poster_path != null) {
                 const article = document.createRange().createContextualFragment(
@@ -123,6 +135,10 @@ function buscar() {
             }
 
         })
+        botonPag.innerHTML = `
+        <button class="anterior btn" type="button" onclick="mostrarAnterior('${guarda}',2)">Anterior</button>
+        <button class="siguiente btn" type="button" onclick="mostrarSiguiente('${guarda}',2)">Siguiente</button>
+        `;
     });
 }
 
@@ -130,7 +146,8 @@ function buscar() {
 
 //funcion para ver la info de las peliculas
 function infoPelicula(id) {
-
+    tituloPrincipal.innerHTML = '';
+    banner.innerHTML = '';
     console.log(id);//despues borrar
     let infoDePeli = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
 
@@ -146,6 +163,8 @@ function infoPelicula(id) {
 
     getCharacters(data => {
         console.log(data)
+        textoT = `${data.title}`
+        titulo.innerHTML =textoT;
         const article = document.createRange().createContextualFragment(
             `
             <div class="infoPeli"> 
@@ -161,18 +180,16 @@ function infoPelicula(id) {
                         <img src="imagenes/star-solid-24.png">
                     </div>
                     <p>Duracion: ${data.runtime}min</p>
-                    <p class="tituloPeli">${data.title}</p>
-                    <p class="añoPeli">${data.release_date}</p>
+                    <p class="añoPeli">Fecha de lanzamiento: ${data.release_date}</p>
                 </div>
                     <button class="trailer" id="${data.id}" onclick="verTrailer(this.id)"> Trailer </button>
                     <div>
-                    <p>${data.overview}</p>
-                    
+                        <p>${data.overview}</p>
                     </div>
             </div>
         `
         )
-
+        
         info.append(article)
         
     })
@@ -209,9 +226,10 @@ function verTrailer(ide){
 
 //funcion para pedir peliculas segun la categoria
 function pelisCat(query, cat) {
-
-    linkcat = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=10&sort_by=vote_count.desc&with_genres=${query}&with_original_language=en`;
-
+    tituloPrincipal.innerHTML = '';
+    banner.innerHTML = '';
+    linkcat = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc&with_genres=${query}&with_original_language=en`;
+    guarda = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page= &sort_by=vote_count.desc&with_genres=${query}&with_original_language=en`;
     function getCharacters(done) {
         const results = fetch(linkcat, options)
         results
@@ -258,5 +276,9 @@ function pelisCat(query, cat) {
                 main.append(article)
             }
         })
+        botonPag.innerHTML = `
+        <button class="anterior btn" type="button" onclick="mostrarAnterior('${guarda}',3)">Anterior</button>
+        <button class="siguiente btn" type="button" onclick="mostrarSiguiente('${guarda}',3)">Siguiente</button>
+        `;
     })
 }

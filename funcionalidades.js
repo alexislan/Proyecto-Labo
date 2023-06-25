@@ -6,12 +6,34 @@ btnSwitch.addEventListener('click', () => {
 });
 
 
-let cont = 1;
-
-
-function mostrarSiguiente() {
-    cont++;
-    URL_search = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${cont}`;
+let cont1 = 1;
+let cont2 = 1;
+let cont3 = 1;
+let aver = " ";
+let seG = 0;
+function mostrarSiguiente(query,int) {
+    if(int === 1){
+        cont1++;
+        URL_search = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${cont1}`;
+        prueb = cont1;
+        cont2 = 1;
+        cont3 = 1;
+    }else if(int === 2){
+        cont2++;
+        URL_search = query+cont2;
+        prueb = cont2;
+        cont1 = 1;
+        cont3 = 1;
+    }else if(int === 3){
+        cont3++;
+        let prueba = query.split(" ");
+        let nuevo = prueba.join(cont3);
+        URL_search = nuevo;
+        prueb = cont3;
+        cont2 = 1;
+        cont1 = 1;
+    }
+    
 
     function getCharacters(done) {
         const results = fetch(URL_search, options)
@@ -24,11 +46,14 @@ function mostrarSiguiente() {
 
     getCharacters(data => {
         console.log(data)//borrar
-        console.log(cont)//borrar
+       
         topFunction()
         main.innerHTML = '';
         let article = ""
         data.results.forEach(pelicula => {
+            if(pelicula.vote_average >= 8){
+                banner.innerHTML = `<a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)"><img src="https://image.tmdb.org/t/p/original/${pelicula.backdrop_path}" alt="Pelicula mas votada"></a>`;
+            }
             article += //agregar la funcion al onclick
                 `
                 <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
@@ -50,15 +75,34 @@ function mostrarSiguiente() {
             main.innerHTML = article;
         })
     });
-    mostrarUOcultarAnterior();
+    mostrarUOcultarAnterior(prueb);
     // window.history.forward();
 }
 
-
-function mostrarAnterior() {
-    if (cont > 1) {
-        cont--;
-        URL_search = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${cont}`;
+let prueb;
+function mostrarAnterior(query,int) {
+    if (cont1 > 1 || cont2 > 1 || cont3 > 1) {
+        if(int === 1){
+            cont1--;
+            URL_search = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${cont1}`;
+            prueb = cont1;
+            cont2 = 1;
+            cont3 = 1;
+        }else if(int === 2){
+            cont2--;
+            URL_search = query+cont2;
+            prueb = cont2;
+            cont1 = 1;
+            cont3 = 1;
+        }else if(int === 3){
+            cont3--;
+            let prueba = query.split(" ");
+            let nuevo = prueba.join(cont3);
+            URL_search = nuevo;
+            prueb = cont3;
+            cont1 = 1;
+            cont2 = 1;
+        }
         function getCharacters(done) {
             const results = fetch(URL_search, options)
             results
@@ -69,8 +113,8 @@ function mostrarAnterior() {
         }
 
         getCharacters(data => {
-            console.log(data)//borrar
-            console.log(cont)//borrar
+            console.log(data)//borrar despues
+            
             topFunction()
             main.innerHTML = '';
             let article = ""
@@ -97,18 +141,18 @@ function mostrarAnterior() {
             })
         });
     }
-    mostrarUOcultarAnterior();
+    mostrarUOcultarAnterior(prueb);
     // window.history.back();
 }
 
 //funcion para mostrar el boton anterior en base a la pagina que se encuentra
-function mostrarUOcultarAnterior() {
-    if (cont == 1) {
-        console.log("CONTADOR EN EL IF: ", cont)
+function mostrarUOcultarAnterior(prueb) {
+    if (prueb == 1) {
+        console.log("CONTADOR EN EL IF: ", cont1, cont2, cont3)//borrar
         document.querySelector(".anterior").style.display = "none";
     }
     else {
-        console.log("CONTADOR en el else: ", cont)
+        console.log("CONTADOR en el else: ", cont1, cont2, cont3)//borrar
         document.querySelector(".anterior").style.display = "block";
     }
 }

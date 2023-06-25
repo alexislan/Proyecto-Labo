@@ -33,6 +33,7 @@
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Categorias
             </a>
+            
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#" onclick="pelisCat(28, 'Acción')" type="button">Acción</a>
               <a class="dropdown-item" href="#" onclick="pelisCat(12, 'Aventura')" type="button">Aventura</a>
@@ -66,7 +67,9 @@
       </div>
     </nav>
   </header>
-
+  <h1 class="tituloPag">ultimo lanzamiento</h1>
+  <div class="pr">
+  </div>
   <h1 class="titulocategorico">
   </h1>
 
@@ -79,8 +82,8 @@
   </div>
 
   <div class="divBotonesCambioPagina">
-    <button class="anterior btn" type="button" onclick="mostrarAnterior()">Anterior</button>
-    <button class="siguiente btn" type="button" onclick="mostrarSiguiente()">Siguiente</button>
+    <button class="anterior btn" type="button" onclick="mostrarAnterior(null,1)">Anterior</button>
+    <button class="siguiente btn" type="button" onclick="mostrarSiguiente(null,1)">Siguiente</button>
   </div>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">
