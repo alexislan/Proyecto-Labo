@@ -13,13 +13,51 @@ body {
     min-height: 50vh;
     transition: 0.3s ease all;
 }
+
 /*eso es lo que cambie*/
-.pr img{
-width: 100%;
+.pr img {
+    width: 100%;
 }
-.tituloPag{
-    color: white;
+
+.tituloPag {
+    color: #fff;
+    font-size: 2rem;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    margin-top: 1rem;
 }
+
+.bannerImg {
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    width: clamp(50%, 90%, 400px);
+}
+
+.bannerImg img {
+    border: 2px solid yellow;
+    -moz-box-shadow: inset 10px 10px 50px #fff;
+    -webkit-box-shadow: inset 10px 10px 50px #fff;
+    box-shadow: 3px 2px 5px #fff;
+    transition: 0.3s ease-in-out all;
+    /* width: clamp(50%, 90%, 400px)); */
+    width: 100%;
+}
+
+.bannerImg img:hover {
+    transition: 0.3s ease-in-out all;
+    transform: scale(1.02);
+    cursor: pointer;
+    border: 2px solid #a6bad7;
+}
+
+.bannerImg p {
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    margin-top: 0.8rem;
+}
+
 /*hasta aca llega*/
 
 
@@ -49,36 +87,51 @@ header {
 }
 
 /*informacion de la peli*/
-.infoPeliculas{
+.infoPeliculas {
     display: flex;
     flex-direction: row;
-    
+
 }
 
-.infoPeli{
+.infoPeli {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.infoPeli .banner img{
-width: 100%;
-margin-bottom: 20px;
+
+.infoPeli .banner img {
+    width: 100%;
+    margin-bottom: 20px;
 }
-.infoPeli .poster img{
+
+.infoPeli .poster img {
     justify-content: center;
     display: flex;
     height: 200px;
     width: 125px;
+    box-shadow: 1px 1px 5px #fff;
+    margin-bottom: 1rem;
+    width: clamp(50%, 90%, 400px);
+    min-height: calc(100vh - 400px);
+}
+
+.peliOverview{
+    color: #fff;
+    font-size: clamp(1rem, 1.7vw, 1.5rem);
+    display: flex;
+    margin: 0.8rem auto 1rem auto;
+    width: clamp(50%, 90%, 400px);
 }
 
 
 .titulocategorico {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: -2rem;
     font-size: x-large;
     color: #a6bad7;
+    /* color: #f9dc5c; */
     font-family: "Josefin Sans", sans-serif;
 }
 
@@ -234,11 +287,13 @@ p {
     cursor: pointer;
     transition: 0.3s ease all;
 }
-.trailer:hover{
+
+.trailer:hover {
     scale: 1.1;
     transition: 0.3s ease all;
 }
-.trailer:active{
+
+.trailer:active {
     transition: 0.3s ease all;
 }
 
@@ -298,7 +353,7 @@ p {
 
 @media all and (min-width: 280px) and (max-width: 400px) {
     .containerPelis {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         width: 95%;
     }
 

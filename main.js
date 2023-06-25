@@ -38,13 +38,14 @@ function pelisPop() {
         const main = document.querySelector(".containerPelis");
         titulo.innerHTML = '';
         textoT = "Peliculas populares";
-        titulo.innerHTML = textoT;
+        // titulo.innerHTML = textoT;
+        titulo.innerHTML = `<h3 style="margin-top: 2rem">Peliculas populares</h3>`;
         main.innerHTML = '';
         let article = ""
         banner.innerHTML = '';
         data.results.forEach(pelicula => {
             if(pelicula.vote_average >= 8){
-                banner.innerHTML = `<a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)"><img src="https://image.tmdb.org/t/p/original/${pelicula.backdrop_path}" alt="Pelicula mas votada"></a>`;
+                banner.innerHTML = `<div class="bannerImg"><a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)"><img src="https://image.tmdb.org/t/p/original/${pelicula.backdrop_path}" alt="Pelicula mas votada"><p>${pelicula.title}</p></a></div>`
             }
             article += //agregar la funcion al onclick
                 `
@@ -111,7 +112,8 @@ function buscar() {
     main.innerHTML = '';
     getCharacters(data => {
         console.log(data);//hay que borrar esto al final
-        titulo.innerHTML = "Resultados para: "+ palabra;
+        // titulo.innerHTML = "Resultados para: "+ palabra;
+        titulo.innerHTML = `<h3 style="margin-top: 2rem">Resultados para: ${palabra}</h3>`;
         data.results.forEach(pelicula => {
             if (pelicula.poster_path != null) {
                 const article = document.createRange().createContextualFragment(
@@ -164,11 +166,12 @@ function infoPelicula(id) {
     getCharacters(data => {
         console.log(data)
         textoT = `${data.title}`
-        titulo.innerHTML =textoT;
+        // titulo.innerHTML =textoT;
+        titulo.innerHTML = `<h3 style="margin-top: 2rem">${textoT}</h3>`;
         const article = document.createRange().createContextualFragment(
             `
             <div class="infoPeli"> 
-                <div class="banner">
+                <div class="bannerImg">
                 <img src="https://image.tmdb.org/t/p/original/${data.backdrop_path}" alt="">
                 </div>
                 <div class="poster">
@@ -184,7 +187,7 @@ function infoPelicula(id) {
                 </div>
                     <button class="trailer" id="${data.id}" onclick="verTrailer(this.id)"> Trailer </button>
                     <div>
-                        <p>${data.overview}</p>
+                        <p class="peliOverview">${data.overview}</p>
                     </div>
             </div>
         `
@@ -253,7 +256,8 @@ function pelisCat(query, cat) {
         else {
             textoT = `Peliculas de ${cat}`;
         }
-        titulo.innerHTML = textoT;
+        // titulo.innerHTML = textoT;
+        titulo.innerHTML = `<h3 style="margin-top: 2rem">${textoT}</h3>`;
         data.results.forEach(pelicula => {
             if (pelicula.poster_path != null) {
 
