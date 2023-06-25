@@ -77,14 +77,11 @@ header {
     row-gap: 3rem;
 }
 .peli{
-<<<<<<< HEAD
     /* display: flex; */
     /* height: 10rem; */
     /* width: 7rem; */
     /* border: solid white 2px; */
     margin: 2.4px;
-=======
->>>>>>> 980dff0c6a63bfd4b02931873edbd4b1eecc44da
     border: 3px solid #e9edde;
     box-shadow: inset 0 0 1px 1px rgba(20,24,28,.125);
     background-color: #1f2121;
@@ -187,7 +184,6 @@ p{
 .red{
    color: red;
 }
-<<<<<<< HEAD
 /*BOTON PARA VER TRAILER */
 .trailer {
     padding: 14px 33px;
@@ -278,7 +274,6 @@ p{
 .arrow.right-arrow{
      right: 10%;
 }
-=======
 /**/
 
 
@@ -322,4 +317,3 @@ p{
 /*DE 455 PIXELES  PARA ABAJO Q SE VEAN 2 COLUMNAS*/
 /*DE 455 PIXELES PARA ARRIBA 3 COLUMNAS*/
 /*DE 500 PX PARA ARRIBA 5 COLUMNAS*/
->>>>>>> 980dff0c6a63bfd4b02931873edbd4b1eecc44da

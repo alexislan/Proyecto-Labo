@@ -102,13 +102,8 @@ function buscar(){
                     <div class="peli"> 
                         <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
                         <div>
-<<<<<<< HEAD
-                        <p class="tituloPeli">${pelicula.title}</p>
-                        <div class = "puntajeP">
-=======
                             <p class="tituloPeli">${pelicula.title}</p>
                             <div class = "puntajeP">
->>>>>>> 980dff0c6a63bfd4b02931873edbd4b1eecc44da
                             <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
                             <img src="imagenes/star-solid-24.png">
                             </div>
@@ -279,18 +274,6 @@ function pelisCat(query, cat){
 
                     const article = document.createRange().createContextualFragment(
                         `
-<<<<<<< HEAD
-                        <a href="#"  type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
-                            <div class="peli"> 
-                                <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
-                                <div>
-                                    <p class="tituloPeli">${pelicula.title}</p>
-                                    <div class = "puntajeP">
-                            <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
-                            <img src="imagenes/star-solid-24.png">
-                            </div>
-                                </div>
-=======
                         <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
                         <div class="peli"> 
                             <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
@@ -299,7 +282,6 @@ function pelisCat(query, cat){
                             <div class = "puntajeP">
                                 <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
                                 <img src="imagenes/star-solid-24.png">
->>>>>>> 980dff0c6a63bfd4b02931873edbd4b1eecc44da
                             </div>
                         </div>
                         </div>
