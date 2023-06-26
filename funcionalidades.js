@@ -1,16 +1,11 @@
-const btnSwitch = document.querySelector('#switch')
-
-btnSwitch.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    btnSwitch.classList.toggle('active');
-});
-
-
+//VARIABLES
 let cont1 = 1;
 let cont2 = 1;
 let cont3 = 1;
 let aver = " ";
 let seG = 0;
+
+//FUNCIONALIDAD DE LOS BOTONES SIGUIENTE Y ANTERIOR
 function mostrarSiguiente(query,int) {
     if(int === 1){
         cont1++;
@@ -45,16 +40,12 @@ function mostrarSiguiente(query,int) {
     }
 
     getCharacters(data => {
-        console.log(data)//borrar
-       
         topFunction()
         main.innerHTML = '';
         let article = ""
         data.results.forEach(pelicula => {
-            if(pelicula.vote_average >= 8){
-                banner.innerHTML = `<a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)"><img src="https://image.tmdb.org/t/p/original/${pelicula.backdrop_path}" alt="Pelicula mas votada"></a>`;
-            }
-            article += //agregar la funcion al onclick
+            
+            article += 
                 `
                 <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
                     <div class="peli"> 
@@ -76,7 +67,6 @@ function mostrarSiguiente(query,int) {
         })
     });
     mostrarUOcultarAnterior(prueb);
-    // window.history.forward();
 }
 
 let prueb;
@@ -113,15 +103,14 @@ function mostrarAnterior(query,int) {
         }
 
         getCharacters(data => {
-            console.log(data)//borrar despues
-            
             topFunction()
             main.innerHTML = '';
             let article = ""
             data.results.forEach(pelicula => {
-                article += //agregar la funcion al onclick
+                
+                article +=
                     `
-                    <a href="#" type="button" id="${pelicula.id}" onclick="infoPelicula(this.id)">
+                    <a href="#" type="button" id="${pelicula.id}" style="text-decoration:none" onclick="infoPelicula(this.id)">
                         <div class="peli"> 
                             <img src="https://image.tmdb.org/t/p/original/${pelicula.poster_path}" alt="">
                             <div>
@@ -148,11 +137,9 @@ function mostrarAnterior(query,int) {
 //funcion para mostrar el boton anterior en base a la pagina que se encuentra
 function mostrarUOcultarAnterior(prueb) {
     if (prueb == 1) {
-        console.log("CONTADOR EN EL IF: ", cont1, cont2, cont3)//borrar
         document.querySelector(".anterior").style.display = "none";
     }
     else {
-        console.log("CONTADOR en el else: ", cont1, cont2, cont3)//borrar
         document.querySelector(".anterior").style.display = "block";
     }
 }
@@ -177,5 +164,42 @@ function topFunction() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-/*MODIFICAR LO DEL JS PARA QUE AL ABRIR UNA PELI TE LA MUESTRE "BIEN"*/
-/*ARREGLAR EL TEMA DEL PAGINADO*/
+
+
+
+//flecha para volver atras
+flecha.addEventListener('click', function(){
+    flecha.innerHTML = '';
+    main.innerHTML = inerMain;
+    titulo.innerHTML = inerTitle;
+    info.innerHTML = '';
+    banner.innerHTML = inerBan;
+    tituloPrincipal.innerHTML = inerTitleP;
+    botonPag.innerHTML = inerBoton;
+})
+///////////////
+
+
+
+//funcion para ver el trailer de la peli
+function verTrailer(ide){
+    URL_search = `https://api.themoviedb.org/3/movie/${ide}/videos?language=en-US`;
+
+    function getCharacters(done) {
+        const results = fetch(URL_search, options)
+        results
+            .then(response => response.json())
+            .then(data => {
+                done(data)
+            })
+    }
+    getCharacters(data => {
+        console.log(data);
+        data.results.forEach(video => {
+            if(video.type === "Teaser"){
+                window.location.href = `https://www.youtube.com/embed/${video.key}`
+            }
+        })
+        
+    })
+}

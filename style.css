@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@100&family=Roboto+Slab:wght@900&display=swap');
 
 * {
     margin: 0;
@@ -7,14 +8,22 @@
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
 }
-
 body {
     background-color: #1f2121;
     min-height: 50vh;
     transition: 0.3s ease all;
 }
 
-/*eso es lo que cambie*/
+/*flecha para volver atras*/
+.filtro{
+    display: none;
+}
+.flechAtras button{
+    background-color: #1f2121;
+    border: 0;
+    box-shadow: 0;
+}
+
 .pr img {
     width: 100%;
 }
@@ -57,25 +66,11 @@ body {
     text-align: center;
     margin-top: 0.8rem;
 }
-
-/*hasta aca llega*/
-
-
-
-
-
-.dark {
-    background-color: #343d5b;
-}
-
-.sss {
-    background-color: black;
-}
-
+/*tamanio del logo*/
 .logo {
     height: 30px;
 }
-
+/*estilo del header*/
 nav {
     background-color: #f9dc5c;
 }
@@ -87,12 +82,39 @@ header {
 }
 
 /*informacion de la peli*/
-.infoPeliculas {
+.miniInfo{
     display: flex;
-    flex-direction: row;
-
+    flex-direction: column;
+}
+.miniInfo .puntajeP{
+    display: flex;
+    justify-content: center;
+}
+.datosPe{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.datosPe p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color:rgb(43, 42, 42);
+    border: #f9dc5c solid ;
+    border-radius: 1rem;
+    padding: 1rem;
+    color: #fff;
+    font-size: clamp(1rem, 1.7vw, 1.5rem);
+    display: flex;
+    margin: 0.8rem auto 1rem auto;
+    width: clamp(50%, 90%, 400px);
 }
 
+.datosPe h4{
+    color: #f9dc5c;
+}
 .infoPeli {
     display: flex;
     flex-direction: column;
@@ -115,15 +137,6 @@ header {
     width: clamp(50%, 90%, 400px);
     min-height: calc(100vh - 400px);
 }
-
-.peliOverview{
-    color: #fff;
-    font-size: clamp(1rem, 1.7vw, 1.5rem);
-    display: flex;
-    margin: 0.8rem auto 1rem auto;
-    width: clamp(50%, 90%, 400px);
-}
-
 
 .titulocategorico {
     display: flex;
@@ -197,71 +210,12 @@ header {
     text-align: center;
 }
 
-/* BOTON DARK MODE */
-.switch {
-    margin-right: 15px;
-    background-color: #343d5b;
-    border-radius: 1000px;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    outline: none;
-}
 
-.switch::after {
-    content: "";
-    display: block;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    background: #f1f1f1;
-    top: 0;
-    left: 0;
-    right: unset;
-    border-radius: 100px;
-    transition: 0.3s ease all;
-    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-.switch.active {
-    background: orange;
-    color: #000;
-}
-
-.switch.active::after {
-    right: 0;
-    left: unset;
-}
-
-.switch span {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    display: block;
-    background: none;
-    color: #ffff;
-}
-
-body.dark nav {
-    background-color: #535161;
-}
-
-body.dark p {
-    color: white;
-}
-
-body.dark .peli p {
-    color: black;
-}
 
 .peli p {
     color: black;
 }
 
-p {
-    color: white;
-}
 
 /*DEPENDIENDO DEL PUNTAJE DE LA PELI, VA A TENER ESTE COLOR*/
 .green {
@@ -377,5 +331,12 @@ p {
 @media all and (min-width: 901px) and (max-width: 1500px) {
     .containerPelis {
         grid-template-columns: repeat(6, 1fr);
+    }
+}
+/*hacer responsive el muestreo de informacion*/
+@media screen and(max-width: 940px){
+    .infoPeli{
+        display: flex;
+        flex-direction: row;
     }
 }

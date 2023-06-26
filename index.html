@@ -31,34 +31,31 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" style="font-weight: bold;" id="navbarDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Categorias
+              Genres
             </a>
             
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#" onclick="pelisCat(28, 'Acción')" type="button">Acción</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(12, 'Aventura')" type="button">Aventura</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(16, 'Animacion')" type="button">Animacion</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(35, 'Comedia')" type="button">Comedia</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(80, 'Crimenes')" type="button">Crimenes</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(99, 'Documentales')" type="button">Documentales</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(28, 'Action')" type="button">Action</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(12, 'Adventure')" type="button">Adventure</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(16, 'Animation')" type="button">Animation</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(35, 'Comedy')" type="button">Comedy</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(80, 'Crime')" type="button">Crime</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(99, 'Documentarys')" type="button">Documentarys</a>
               <a class="dropdown-item" href="#" onclick="pelisCat(18, 'Drama')" type="button">Drama</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(10751, 'Familiares')" type="button">Familiares</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(14, 'Fantasia')" type="button">Fantasia</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(36, 'Historia')" type="button">Historia</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(27, 'Terror')" type="button">Terror</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(9648, 'Misterio')" type="button">Misterio</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(10751, 'Family')" type="button">Family</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(14, 'Fantasy')" type="button">Fantasy</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(36, 'History')" type="button">History</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(27, 'Horror')" type="button">Horror</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(9648, 'Mystery')" type="button">Mystery</a>
               <a class="dropdown-item" href="#" onclick="pelisCat(10749, 'Romance')" type="button">Romance</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(878, 'Ciencia ficción')" type="button">Ciencia ficción</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(10770, 'TV')" type="button">TV</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(53, 'Suspense')" type="button">Suspense</a>
-              <a class="dropdown-item" href="#" onclick="pelisCat(10752, 'Bélicas')" type="button">Bélicas</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(878, 'Science Fiction')" type="button">Science Fiction</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(10770, 'TV')" type="button">TV Movie</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(53, 'Thriller')" type="button">Thriller</a>
+              <a class="dropdown-item" href="#" onclick="pelisCat(10752, 'War')" type="button">War</a>
             </div>
           </li>
         </ul>
-        <button class="switch" id="switch">
-          <span><i class="fa-solid fa-sun"></i></span>
-          <span><i class="fa-solid fa-moon"></i></span>
-        </button>
+        
         <form class="form-inline my-2 my-lg-0">
           <input id="inpu" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button onclick="buscar()" class="btn btn-outline-success my-2 my-sm-0" style="font-weight: bold;"
@@ -67,8 +64,14 @@
       </div>
     </nav>
   </header>
-  <h1 class="tituloPag">Pelicula mas Popular</h1>
+  <div class="flechAtras">
+    
+  </div>
+
+  <h1 class="tituloPag">Most popular movie</h1>
+
   <div class="pr">
+
   </div>
   <h1 class="titulocategorico">
   </h1>
@@ -82,8 +85,8 @@
   </div>
 
   <div class="divBotonesCambioPagina">
-    <button class="anterior btn" type="button" onclick="mostrarAnterior(null,1)">Anterior</button>
-    <button class="siguiente btn" type="button" onclick="mostrarSiguiente(null,1)">Siguiente</button>
+    <button class="anterior btn" type="button" onclick="mostrarAnterior(null,1)">Back</button>
+    <button class="siguiente btn" type="button" onclick="mostrarSiguiente(null,1)">Next</button>
   </div>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">
