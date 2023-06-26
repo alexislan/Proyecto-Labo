@@ -126,9 +126,13 @@ header {
     width: 100%;
     margin-bottom: 20px;
 }
-
+.infoPeli .poster{
+    display: flex;
+    justify-content: center;
+}
 .infoPeli .poster img {
     justify-content: center;
+    align-items: center;
     display: flex;
     height: 200px;
     width: 125px;
