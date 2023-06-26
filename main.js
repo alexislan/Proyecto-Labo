@@ -84,7 +84,7 @@ function pelisPop() {
                         <div>
                             <p class="tituloPeli">${pelicula.title}</p>
                             <div class = "puntajeP">
-                            <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
+                            <span class="${getColor(pelicula.vote_average)}">${(Math.round(pelicula.vote_average * 10) /10)}</span>
                             <img src="imagenes/star-solid-24.png">
                             </div>
                         </div>
@@ -149,7 +149,7 @@ function buscar() {
                             <div>
                                 <p class="tituloPeli">${pelicula.title}</p>
                                 <div class = "puntajeP">
-                                <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
+                                <span class="${getColor(pelicula.vote_average)}">${(Math.round(pelicula.vote_average * 10) /10)}</span>
                                 <img src="imagenes/star-solid-24.png">
                                 </div>
                             </div>
@@ -217,7 +217,7 @@ function pelisCat(query, cat) {
                         <div>
                             <p class="tituloPeli">${pelicula.title}</p>
                             <div class = "puntajeP">
-                                <span class="${getColor(pelicula.vote_average)}">${pelicula.vote_average}</span>
+                                <span class="${getColor(pelicula.vote_average)}">${(Math.round(pelicula.vote_average * 10) /10)}</span>
                                 <img src="imagenes/star-solid-24.png">
                             </div>
                         </div>
@@ -260,7 +260,7 @@ function infoPelicula(id) {
     botonPag.innerHTML = '';
     getCharacters(data => {
         textoT = `${data.title}`
-        titulo.innerHTML = `<h3 style="margin-top: 2rem">${textoT}</h3>`;
+        titulo.innerHTML = `<h3 style="margin-top: 2rem" class="titulocategorico">${textoT}</h3>`;
         let genres = data.genres;
         let generos = '';
         for(let y = 0; y < genres.length; y++){
@@ -281,7 +281,7 @@ function infoPelicula(id) {
                 </div>
                 <div class="miniInfo">
                     <div class = "puntajeP">
-                        <span class="${getColor(data.vote_average)}">${data.vote_average}</span>
+                        <span class="${getColor(data.vote_average)}">${(Math.round(data.vote_average * 10) / 10)}</span>
                         <img src="imagenes/star-solid-24.png">
                     </div>
                     <button class="trailer" id="${data.id}" onclick="verTrailer(this.id)"> Trailer </button>
